@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Supprimer</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" showDetail="false" />
+
+		<p:menuButton value="Options">
+			<p:menuitem value="Home" url="acceuil.xhtml" icon="ui-icon-home" />
+			<p:separator />
+			<p:menuitem value="Logout" url="login.xhtml" icon="ui-icon-extlink" />
+		</p:menuButton>
+	</h:form>
+	<h2 style="text-align: center;">Supprimer un utilisateur</h2>
+	<div align="center">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="id" value="ID: " />
+				<p:inputMask id="id" value="#{userMB.user.id_user}" />
+
+				<h:commandButton value="Supprimer"
+					action="#{userMB.supprimerUser()}" />
+
+			</h:panelGrid>
+
+
+		</h:form>
+	</div>
+	<br />
+	<ui:insert name="footer">
+		<ui:include src="/template/footer.xhtml" />
+	</ui:insert>
+</h:body>
+</html>

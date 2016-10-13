@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Mes utilisateurs</title>
+</h:head>
+<h:body>
+	<div>
+		<h:form>
+			<p:growl id="messages" showDetail="true" />
+
+			<p:menuButton value="Options">
+				<p:menuitem value="Ajouter" url="ajouter.xhtml"
+					icon="ui-icon-document" />
+				<p:menuitem value="Modifier" url="modifier.xhtml"
+					icon="ui-icon-pencil" />
+				<p:menuitem value="Suppprimer" url="supprimer.xhtml"
+					icon="ui-icon-close" />
+				<p:separator />
+				<p:menuitem value="Logout" url="login.xhtml" icon="ui-icon-extlink" />
+			</p:menuButton>
+		</h:form>
+	</div>
+	<br />
+
+	<h2 style="text-align: center;">Mes USERS</h2>
+
+	<br />
+	<h:form>
+		<p:dataTable var="user" value="#{sessionScope.listeUsers}" rows="5"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="1,3,5">
+			<p:column style="text-align: center" headerText="Id">
+				<h:outputText value="#{user.id_user}" />
+			</p:column>
+
+			<p:column style="text-align: center" headerText="Date de naissance">
+				<h:outputText  value="#{user.daten}"></h:outputText>
+			</p:column>
+
+
+			<p:column style="text-align: center" headerText="Nom">
+				<h:outputText value="#{user.nom}"></h:outputText>
+			</p:column>
+
+			<p:column style="text-align: center">
+
+				<p:commandButton update="@all" action="#{userMB.supprimerUser()}"
+					icon="ui-icon-trash" title="Supprimer">
+					<f:setPropertyActionListener value="#{user}"
+						target="#{userMB.user}" />
+				</p:commandButton>
+
+			</p:column>
+
+		</p:dataTable>
+		</h:form>
+		<br />
+		<br />
+	<ui:insert name="footer">
+		<ui:include src="/template/footer.xhtml" />
+	</ui:insert>
+</h:body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Page d'acueil</title>
+</h:head>
+<h:body>
+	<h1 align="center" style="background-color: blue">Formulaire
+		+Validation</h1>
+	<br />
+	<div align="center">
+		<h:messages style="color:red"></h:messages>
+		<h:form>
+
+			<h:panelGrid columns="2">
+				<!-- Validation automatique et implicite -->
+		
+		Mail : <h:inputText id="mailId" value="#{agentMB.mail}" label="Mail"
+					required="true">
+				</h:inputText>
+				
+		Password: <h:inputSecret id="passwordId" value="#{agentMB.password}"
+					required="true">
+				</h:inputSecret>
+				<h:message for="passwordId" style="color:red"></h:message>
+				<h:panelGroup style="display:block; text-align:center">
+					<h:commandButton value="Valider" action="#{agentMB.isExist()}"></h:commandButton>
+				</h:panelGroup>
+			</h:panelGrid>
+
+		</h:form>
+	</div>
+<ui:insert name="footer">
+<ui:include src="/template/footer.xhtml" />
+</ui:insert>
+</h:body>
+</html>
